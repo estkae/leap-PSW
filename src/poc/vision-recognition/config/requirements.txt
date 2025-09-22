@@ -1,0 +1,87 @@
+# LEAP-PSW Vision Recognition POC Requirements
+
+# Core ML/CV libraries
+numpy>=1.21.0
+opencv-python>=4.5.0
+torch>=1.12.0
+torchvision>=0.13.0
+torchaudio>=0.12.0
+
+# TensorFlow ecosystem (for mobile deployment)
+tensorflow>=2.9.0
+tensorflow-lite>=2.9.0
+
+# Image processing
+Pillow>=8.3.0
+scikit-image>=0.19.0
+imageio>=2.19.0
+
+# Computer Vision utilities
+albumentations>=1.2.0
+imgaug>=0.4.0
+
+# Data handling
+pandas>=1.4.0
+h5py>=3.7.0
+
+# Performance and optimization
+numba>=0.56.0
+onnx>=1.12.0
+onnxruntime>=1.12.0
+
+# Development and testing
+pytest>=7.1.0
+pytest-cov>=3.0.0
+black>=22.3.0
+flake8>=4.0.0
+mypy>=0.961
+
+# Jupyter for experimentation
+jupyter>=1.0.0
+ipywidgets>=7.7.0
+matplotlib>=3.5.0
+seaborn>=0.11.0
+
+# Logging and monitoring
+loguru>=0.6.0
+tqdm>=4.64.0
+
+# Configuration
+pyyaml>=6.0
+python-dotenv>=0.20.0
+
+# Web API (for REST endpoints)
+fastapi>=0.78.0
+uvicorn>=0.18.0
+pydantic>=1.9.0
+
+# Database (for storing results)
+sqlalchemy>=1.4.0
+sqlite3
+
+# Utilities
+requests>=2.28.0
+pathlib2>=2.3.0
+
+# Mobile deployment utilities
+coremltools>=6.0  # iOS deployment
+# Note: Android deployment uses TensorFlow Lite (already included above)
+
+# Edge device support
+# For Raspberry Pi
+# RPi.GPIO>=0.7.1  # Uncomment if deploying to Raspberry Pi
+
+# For NVIDIA Jetson
+# jetson-stats>=4.0.0  # Uncomment if deploying to Jetson
+
+# Cloud deployment (optional)
+boto3>=1.24.0  # AWS
+azure-storage-blob>=12.12.0  # Azure
+google-cloud-storage>=2.5.0  # GCP
+
+# Performance monitoring
+psutil>=5.9.0
+memory-profiler>=0.60.0
+
+# Video processing (optional)
+# ffmpeg-python>=0.2.0  # Uncomment if video processing needed
