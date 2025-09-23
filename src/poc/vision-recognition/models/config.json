@@ -1,0 +1,9 @@
+{
+  "model_version": "1.0.0",
+  "input_size": [
+    416,
+    416
+  ],
+  "num_classes": 10,
+  "confidence_threshold": 0.5
+}

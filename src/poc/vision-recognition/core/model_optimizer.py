@@ -136,7 +136,7 @@ class ModelOptimizer:
             steps.append(f"Pruned {config.pruning_ratio*100:.1f}% of weights")
 
         # 3. Model Architecture Optimization
-        if config.level >= OptimizationLevel.MODERATE:
+        if config.level.value >= OptimizationLevel.MODERATE.value:
             optimized_model, arch_info = self._optimize_architecture(
                 optimized_model,
                 config
@@ -152,7 +152,7 @@ class ModelOptimizer:
         warnings.extend(target_info.get('warnings', []))
 
         # 5. Operator Fusion
-        if config.level >= OptimizationLevel.BASIC:
+        if config.level.value >= OptimizationLevel.BASIC.value:
             optimized_model = self._apply_operator_fusion(optimized_model)
             steps.append("Applied operator fusion")
 
@@ -238,6 +238,21 @@ class ModelOptimizer:
                 optimize_for_power=True
             )
         }
+
+        # Add default for EDGE_CPU if missing
+        if OptimizationTarget.EDGE_CPU not in configs:
+            configs[OptimizationTarget.EDGE_CPU] = OptimizationConfig(
+                target=OptimizationTarget.EDGE_CPU,
+                level=OptimizationLevel.MODERATE,
+                quantization=True,
+                pruning_ratio=0.2,
+                use_fp16=False,
+                batch_size=1,
+                input_shape=(416, 416),
+                max_model_size_mb=100,
+                optimize_for_latency=True
+            )
+
         return configs.get(self.target_device, configs[OptimizationTarget.EDGE_CPU])
 
     def _apply_quantization(
@@ -290,16 +305,16 @@ class ModelOptimizer:
         arch_info = {'steps': []}
 
         # Layer replacement optimizations
-        if config.level >= OptimizationLevel.MODERATE:
+        if config.level.value >= OptimizationLevel.MODERATE.value:
             # Replace complex layers with simpler alternatives
             arch_info['steps'].append("Replaced complex convolutions with depthwise separable")
 
         # Remove unnecessary layers
-        if config.level >= OptimizationLevel.AGGRESSIVE:
+        if config.level.value >= OptimizationLevel.AGGRESSIVE.value:
             arch_info['steps'].append("Removed redundant batch normalization layers")
 
         # Reduce model width/depth
-        if config.max_model_size_mb and config.level >= OptimizationLevel.AGGRESSIVE:
+        if config.max_model_size_mb and config.level.value >= OptimizationLevel.AGGRESSIVE.value:
             arch_info['steps'].append("Reduced model channels by 25%")
 
         return model, arch_info

@@ -1,0 +1,10 @@
+person
+face
+car
+bicycle
+dog
+cat
+bird
+chair
+table
+bottle
