@@ -135,13 +135,30 @@ def demo_image_processing(args):
     if args.image_path:
         if os.path.exists(args.image_path):
             image = cv2.imread(args.image_path)
-            print(f"📁 Loaded image: {args.image_path}")
+
+            # If image loading failed, try BMP alternative
+            if image is None:
+                bmp_path = args.image_path.replace('.jpg', '.bmp').replace('.png', '.bmp')
+                if os.path.exists(bmp_path):
+                    print(f"📁 Trying BMP alternative: {bmp_path}")
+                    image = cv2.imread(bmp_path)
+
+            if image is not None:
+                print(f"📁 Loaded image: {args.image_path}")
+            else:
+                print(f"⚠️ Could not load image: {args.image_path}")
+                print("   Creating synthetic demo image instead...")
+                image = create_demo_image()
         else:
             print(f"❌ Image not found: {args.image_path}")
             return
     else:
         image = create_demo_image()
         print("🎨 Created synthetic demo image")
+
+    if image is None:
+        print("❌ Failed to load or create image")
+        return
 
     print(f"Image shape: {image.shape}")
 
