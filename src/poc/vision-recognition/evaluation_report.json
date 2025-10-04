@@ -1,0 +1,181 @@
+{
+  "model_info": {
+    "model_path": "checkpoints/best_model.pth",
+    "config": {
+      "model_type": "lfm2_vl",
+      "num_classes": 10,
+      "input_size": [
+        224,
+        224
+      ],
+      "batch_size": 32,
+      "learning_rate": 0.001,
+      "num_epochs": 10,
+      "validation_split": 0.2,
+      "optimizer": "adam",
+      "scheduler": "cosine",
+      "weight_decay": 0.0001,
+      "augmentation": true,
+      "augment_prob": 0.5,
+      "device": "cpu",
+      "num_workers": 4,
+      "checkpoint_dir": "checkpoints",
+      "save_every": 5,
+      "early_stopping": true,
+      "patience": 5
+    },
+    "class_names": [
+      "background",
+      "face",
+      "person",
+      "car",
+      "bicycle",
+      "dog",
+      "cat",
+      "chair",
+      "table",
+      "bottle"
+    ]
+  },
+  "metrics": {
+    "accuracy": 0.1,
+    "precision": 0.01,
+    "recall": 0.1,
+    "f1_score": 0.01818181818181818,
+    "inference_time_ms": 243.33810806274414
+  },
+  "class_performance": {
+    "background": 0.0,
+    "face": 0.0,
+    "person": 0.0,
+    "car": 1.0,
+    "bicycle": 0.0,
+    "dog": 0.0,
+    "cat": 0.0,
+    "chair": 0.0,
+    "table": 0.0,
+    "bottle": 0.0
+  },
+  "confusion_matrix": [
+    [
+      0,
+      0,
+      0,
+      10,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      10,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      10,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      10,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      10,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      10,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      10,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      10,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      10,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      10,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  ]
+}
